@@ -9,7 +9,7 @@
 /**
  */
 
- //Preorder traversal checks root and then left and then
+//Preorder traversal checks root and then left and then right
 var preorderTraversal = function (root) {
   let result = [];
   function traverse(node) {
@@ -19,6 +19,20 @@ var preorderTraversal = function (root) {
       result.push(node.val);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
+    }
+  }
+  traverse(root);
+  return result;
+};
+
+//Inorder traversal checks left and then root and then right
+var inorderTraversal = function (root) {
+  let result = [];
+  function traverse(root) {
+    if (root) {
+      if (root.left) traverse(root.left);
+      result.push(root.val);
+      if (root.right) traverse(root.right);
     }
   }
   traverse(root);
