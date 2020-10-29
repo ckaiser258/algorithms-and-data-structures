@@ -38,3 +38,17 @@ var inorderTraversal = function (root) {
   traverse(root);
   return result;
 };
+
+//Postorder checks left and then right and then root
+var postorderTraversal = function (root) {
+  let result = [];
+  function traverse(node) {
+    if (node) {
+      traverse(node.left);
+      traverse(node.right);
+      result.push(node.val);
+    }
+  }
+  traverse(root);
+  return result;
+};
