@@ -6,8 +6,6 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-/**
- */
 
 //Preorder traversal checks root and then left and then right
 var preorderTraversal = function (root) {
@@ -50,5 +48,27 @@ var postorderTraversal = function (root) {
     }
   }
   traverse(root);
+  return result;
+};
+
+//Breadth first search
+//Returns an array of arrays
+//Each inner array contains that level's nodes
+var levelOrder = function (root) {
+  let result = [];
+  if (!root) return result;
+  let queue = [root];
+  while (queue.length) {
+    let row = [];
+    let rowSize = queue.length;
+    while (rowSize) {
+      let node = queue.shift();
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+      row.push(node.val);
+      rowSize--;
+    }
+    result.push(row);
+  }
   return result;
 };
